@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Besztweb — Weboldal fejlesztés</title>
+<meta name="description" content="Egyszemélyes webfejlesztés mechatronikai háttérrel. Precíz, gyors weboldalak Beszterczey Kristóftól.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="rail" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="container header-row">
+    <a href="#top" class="brand" aria-label="Besztweb, kezdőlap">
+      <svg class="brand-mark" width="34" height="34" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M6 38L18 10H24L14 34H22L34 10H40L28 38H22L30 16H24L14 38H6Z" fill="var(--gate-red)"/>
+        <path d="M14 38L26 10H32L20 38H14Z" fill="var(--gate-blue)" opacity="0.9"/>
+      </svg>
+      <span class="brand-word">Besztweb</span>
+    </a>
+    <nav class="main-nav" aria-label="Fő navigáció">
+      <a href="#services" data-i18n="navServices">Szolgáltatások</a>
+      <a href="#about" data-i18n="navAbout">Rólam</a>
+      <a href="#work" data-i18n="navWork">Munkáim</a>
+      <a href="#contact" data-i18n="navContact">Kapcsolat</a>
+    </nav>
+    <div class="lang-toggle" role="group" aria-label="Nyelv váltása">
+      <button type="button" id="btnHu" aria-pressed="true">HU</button>
+      <button type="button" id="btnEn" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero container">
+    <div class="hero-text">
+      <h1 data-i18n="heroH1">Precíz weboldalak,<br>versenyzői tempóban.</h1>
+      <p class="lead" data-i18n="heroSub">Egyszemélyes webfejlesztés mechatronikai háttérrel — gyors, pontos munka az első vázlattól az élesítésig.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary" data-i18n="heroCta1">Kérj ajánlatot</a>
+        <a href="#work" class="btn btn-ghost" data-i18n="heroCta2">Munkáim megnézése</a>
+      </div>
+    </div>
+    <svg class="hero-mark" viewBox="0 0 320 360" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M60 40L140 40L90 180L150 180L70 320L110 200L50 200L60 40Z" fill="none" stroke="var(--gate-red)" stroke-width="3"/>
+      <path d="M180 30L260 30L215 160L270 160L195 330" fill="none" stroke="var(--gate-blue)" stroke-width="3"/>
+      <path class="carve-line" d="M20 350C110 300 90 210 170 175C240 145 210 70 300 20" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    </svg>
+  </section>
+
+  <section id="services" class="split container">
+    <h2 data-i18n="servicesH2">Amit csinálok</h2>
+    <dl class="spec-list">
+      <div class="spec-row">
+        <dt data-i18n="service1Title">Weboldal fejlesztés</dt>
+        <dd data-i18n="service1Desc">Egyedi, gyors, karbantartható oldalak — statikus vagy dinamikus felépítésben, a célodhoz igazítva.</dd>
+      </div>
+      <div class="spec-row">
+        <dt data-i18n="service2Title">UI/UX tervezés</dt>
+        <dd data-i18n="service2Desc">Letisztult, célra tervezett felületek, amik nem csak szépek, hanem működnek is.</dd>
+      </div>
+      <div class="spec-row">
+        <dt data-i18n="service3Title">Karbantartás &amp; support</dt>
+        <dd data-i18n="service3Desc">Gyors hibajavítás, tartalomfrissítés, apró funkciók — amikor sürgős.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section id="about" class="split container about-row">
+    <div>
+      <h2 data-i18n="aboutH2">Mérnöki pontosság, versenyzői hozzáállás</h2>
+      <p data-i18n="aboutP1">Mechatronikai mérnök hallgató vagyok a BME-n, IBM és Egis háttérrel. Versenyszerűen síelek, jártam junior világbajnokságon is — ott tanultam meg, hogy a részletek és a határidő nem alku tárgya. Ugyanezt hozom a weboldalakba: precíz kivitelezés, végig kontrollált folyamat.</p>
+    </div>
+    <dl class="spec-list spec-list--tight">
+      <div class="spec-row"><dt data-i18n="aboutSpec1Label">Tanulmányok</dt><dd data-i18n="aboutSpec1Val">BME, mechatronikai mérnöki</dd></div>
+      <div class="spec-row"><dt data-i18n="aboutSpec2Label">Tapasztalat</dt><dd data-i18n="aboutSpec2Val">IBM, Egis</dd></div>
+      <div class="spec-row"><dt data-i18n="aboutSpec3Label">Verseny</dt><dd data-i18n="aboutSpec3Val">Junior világbajnokság, síelés</dd></div>
+    </dl>
+  </section>
+
+  <section id="work" class="split container">
+    <h2 data-i18n="workH2">Munkáim</h2>
+    <div class="case">
+      <h3>Snowline Alpesi Síklub</h3>
+      <p data-i18n="caseDesc">Kétnyelvű klubhonlap saját kapcsolati-form backenddel, optimalizált galériával és automata deploy folyamattal.</p>
+      <dl class="spec-list spec-list--tight">
+        <div class="spec-row"><dt data-i18n="caseSpec1Label">Nyelvek</dt><dd>HU / EN</dd></div>
+        <div class="spec-row"><dt data-i18n="caseSpec2Label">Backend</dt><dd>Vercel + Resend</dd></div>
+        <div class="spec-row"><dt data-i18n="caseSpec3Label">Galéria</dt><dd data-i18n="caseSpec3Val">87%-kal kisebb képméret</dd></div>
+      </dl>
+      <a href="https://snowline.hu" class="text-link" target="_blank" rel="noopener" data-i18n="caseLink">Élő oldal megtekintése</a>
+    </div>
+  </section>
+
+  <section id="contact" class="split container">
+    <h2 data-i18n="contactH2">Beszéljünk a projektedről</h2>
+    <p class="lead" data-i18n="contactSub">Írj pár sort arról, mire van szükséged — hamarosan válaszolok.</p>
+    <div class="hero-actions">
+      <a href="mailto:szia@besztweb.hu" class="btn btn-primary" data-i18n="contactCta">Írj emailt</a>
+      <a href="https://github.com/Beszti22" class="text-link" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>Besztweb — Beszterczey Kristóf</span>
+    <span>© 2026</span>
+  </div>
+</footer>
+
+<script src="i18n.js"></script>
+</body>
+</html>
