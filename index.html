@@ -47,11 +47,8 @@
         <a href="#work" class="btn btn-ghost" data-i18n="heroCta2">Munkáim megnézése</a>
       </div>
     </div>
-    <svg class="hero-mark" viewBox="0 0 320 360" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M60 40L140 40L90 180L150 180L70 320L110 200L50 200L60 40Z" fill="none" stroke="var(--gate-red)" stroke-width="3"/>
-      <path d="M180 30L260 30L215 160L270 160L195 330" fill="none" stroke="var(--gate-blue)" stroke-width="3"/>
-      <path class="carve-line" d="M20 350C110 300 90 210 170 175C240 145 210 70 300 20" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-    </svg>
+    <canvas class="hero-mark" id="hero3d" aria-hidden="true"></canvas>
+    <noscript><span class="hero-mark-fallback">Besztweb</span></noscript>
   </section>
 
   <section id="services" class="split container">
@@ -116,6 +113,8 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="hero3d.js"></script>
 <script src="i18n.js"></script>
 </body>
 </html>
