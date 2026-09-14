@@ -155,7 +155,20 @@ a{color:inherit;}
 .text-link:hover{text-decoration-color:var(--ink);}
 
 /* sections */
-.split{padding:76px 28px;border-top:1px solid var(--line);}
+main{perspective:1400px;}
+.split{
+  padding:76px 28px;
+  border-top:1px solid var(--line);
+  opacity:0;
+  transform:rotateX(-10deg) translateY(36px);
+  transform-origin:top center;
+  transition:opacity 0.9s cubic-bezier(.4,0,.2,1), transform 0.9s cubic-bezier(.4,0,.2,1);
+  will-change:transform, opacity;
+}
+.split.in-view{opacity:1;transform:none;}
+@media (prefers-reduced-motion: reduce){
+  .split{opacity:1;transform:none;transition:none;}
+}
 .about-row{display:grid;grid-template-columns:1.2fr 0.8fr;gap:48px;align-items:start;}
 
 .spec-list{margin:24px 0 0;}
