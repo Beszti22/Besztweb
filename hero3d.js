@@ -103,20 +103,32 @@
     mouseY = (e.clientY / window.innerHeight) * 2 - 1;
   }, { passive: true });
 
+  // scroll turns the gimbal further, like a dial being wound as you read down the page
+  var scrollTurn = 0;
+  function onScroll(){
+    scrollTurn = window.scrollY * 0.0035;
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
   var baseRotY = group.rotation.y;
   var baseRotX = group.rotation.x;
 
   if(prefersReduced){
+    window.addEventListener('scroll', function(){
+      group.rotation.y = baseRotY + scrollTurn;
+      renderer.render(scene, camera);
+    }, { passive: true });
     renderer.render(scene, camera);
   } else {
     var clock = new THREE.Clock();
     (function animate(){
       requestAnimationFrame(animate);
       var t = clock.getElapsedTime();
-      group.rotation.y = baseRotY + t * 0.15 + mouseX * 0.25;
+      group.rotation.y = baseRotY + t * 0.15 + mouseX * 0.25 + scrollTurn;
       group.rotation.x = baseRotX + mouseY * 0.15;
-      ringOuter.rotation.z = t * 0.6;
-      ringInner.rotation.z = -t * 0.9;
+      ringOuter.rotation.z = t * 0.6 + scrollTurn * 1.4;
+      ringInner.rotation.z = -t * 0.9 - scrollTurn * 1.1;
       renderer.render(scene, camera);
     })();
   }
