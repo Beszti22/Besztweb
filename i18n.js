@@ -31,6 +31,11 @@
       caseSpec3Label: `Galéria`,
       caseSpec3Val: `87%-kal kisebb képméret`,
       caseLink: `Élő oldal megtekintése`,
+      case2Desc: `Közösségi sportegyesületi oldal a Mátra lábánál, hat szakosztállyal — évszakonként váltó, interaktív hős-szekcióval és jelentkezési formmal.`,
+      case2Spec1Label: `Szakosztályok`,
+      case2Spec1Val: `6 (sí, túra, multisport, vízi sport, tenisz, kosár)`,
+      case2Spec3Label: `Interaktív`,
+      case2Spec3Val: `Évszakváltós műholdkép- és domborzat-vizualizáció`,
       contactH2: `Beszéljünk a projektedről`,
       contactSub: `Írj pár sort arról, mire van szükséged — hamarosan válaszolok.`,
       contactCta: `Írj emailt`
@@ -66,6 +71,11 @@
       caseSpec3Label: `Gallery`,
       caseSpec3Val: `87% smaller image sizes`,
       caseLink: `View live site`,
+      case2Desc: `A community sports club at the foot of the Mátra mountains, with six sections — a season-switching interactive hero and a sign-up form.`,
+      case2Spec1Label: `Sections`,
+      case2Spec1Val: `6 (skiing, hiking, multisport, water sports, tennis, basketball)`,
+      case2Spec3Label: `Interactive`,
+      case2Spec3Val: `Season-switching satellite and terrain visualisation`,
       contactH2: `Let's talk about your project`,
       contactSub: `Send a few lines about what you need — I'll get back to you soon.`,
       contactCta: `Send an email`
