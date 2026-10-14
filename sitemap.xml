@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- sitemap.xml — Beszterczey Web: egyoldalas oldal, egyetlen kanonikus URL.
+     Új aloldal esetén ide kell felvenni egy új <url> blokkot. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://beszterczey.com/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

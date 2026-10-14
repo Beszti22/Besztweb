@@ -1,0 +1,6 @@
+# robots.txt — Beszterczey Web (beszterczey.com)
+# Minden keresőrobot bejárhatja az oldalt; a térkép a Google Search Console-hoz.
+User-agent: *
+Allow: /
+
+Sitemap: https://beszterczey.com/sitemap.xml
