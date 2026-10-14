@@ -3,8 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Besztweb — Weboldal fejlesztés</title>
+<!-- Márkanév: Beszterczey Web (röviden Besztweb), domain: beszterczey.com -->
+<title>Beszterczey Web — Weboldal fejlesztés</title>
 <meta name="description" content="Egyszemélyes webfejlesztés mechatronikai háttérrel. Precíz, gyors weboldalak Beszterczey Kristóftól.">
+<!-- Kanonikus cím és közösségi megosztás: a beszterczey.com az elsődleges domain -->
+<link rel="canonical" href="https://beszterczey.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Beszterczey Web">
+<meta property="og:title" content="Beszterczey Web — Weboldal fejlesztés">
+<meta property="og:description" content="Egyszemélyes webfejlesztés mechatronikai háttérrel. Precíz, gyors weboldalak Beszterczey Kristóftól.">
+<meta property="og:url" content="https://beszterczey.com/">
+<meta property="og:image" content="https://beszterczey.com/favicon.png">
+<meta name="theme-color" content="#14171C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -20,12 +30,10 @@
 
 <header class="site-header">
   <div class="container header-row">
-    <a href="#top" class="brand" aria-label="Besztweb, kezdőlap">
-      <svg class="brand-mark" width="34" height="34" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M6 38L18 10H24L14 34H22L34 10H40L28 38H22L30 16H24L14 38H6Z" fill="var(--gate-red)"/>
-        <path d="M14 38L26 10H32L20 38H14Z" fill="var(--gate-blue)" opacity="0.9"/>
-      </svg>
-      <span class="brand-word">Besztweb</span>
+    <!-- Márka: „Beszt/erczey” — a slalomkapu-perjel kettévágja a nevet, így a
+         Besztweb becenév („Beszt”) benne marad a domainhez illő Beszterczey névben. -->
+    <a href="#top" class="brand" aria-label="Beszterczey Web, kezdőlap">
+      <span class="brand-beszt">Beszt</span><svg class="brand-gate" viewBox="0 0 30 48" aria-hidden="true"><path d="M2 46L20 2h8L10 46z" fill="var(--gate-red)"/><path d="M10 46L22 16h6L16 46z" fill="var(--gate-blue)" opacity="0.9"/></svg><span class="brand-rest">erczey</span><span class="brand-tag">web</span>
     </a>
     <nav class="main-nav" aria-label="Fő navigáció">
       <a href="#services" data-i18n="navServices">Szolgáltatások</a>
@@ -52,7 +60,7 @@
       </div>
     </div>
     <canvas class="hero-mark" id="hero3d" aria-hidden="true"></canvas>
-    <noscript><span class="hero-mark-fallback">Besztweb</span></noscript>
+    <noscript><span class="hero-mark-fallback">Beszterczey Web</span></noscript>
   </section>
 
   <section id="services" class="split container">
@@ -123,7 +131,7 @@
 
 <footer class="site-footer">
   <div class="container footer-row">
-    <span>Besztweb — Beszterczey Kristóf</span>
+    <span>Beszterczey Web (röviden Besztweb) — Beszterczey Kristóf</span>
     <span>© 2026</span>
   </div>
 </footer>

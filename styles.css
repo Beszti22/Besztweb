@@ -82,11 +82,31 @@ a{color:inherit;}
   gap:10px;
   text-decoration:none;
 }
-.brand-word{
+/* Márka szóvédjegy: „Beszt / erczey · web”
+   - .brand-beszt: a kiemelt becenév-rész (Besztweb → Beszt)
+   - .brand-gate:  a slalomkapu-perjel (piros/kék), ugyanaz, mint a faviconban
+   - .brand-rest:  a név többi része halványabban
+   - .brand-tag:   kis „WEB” címke */
+.brand{gap:0;color:var(--ink);line-height:1;align-items:flex-end;}
+.brand-beszt,.brand-rest{
   font-family:var(--font-display);
-  font-weight:700;
-  font-size:1.15rem;
+  font-size:1.3rem;
+  letter-spacing:-0.03em;
 }
+.brand-beszt{font-weight:700;color:var(--ink);}
+.brand-rest{font-weight:400;color:var(--ink-muted);}
+.brand-gate{width:0.8rem;height:1.3rem;margin:0 0.05rem;flex:none;}
+.brand-tag{
+  font-family:var(--font-body);
+  font-size:0.62rem;
+  font-weight:600;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--ink-muted);
+  margin-left:0.45rem;
+  padding-bottom:0.18rem;
+}
+.brand:hover .brand-rest{color:var(--ink);transition:color 150ms ease;}
 .main-nav{
   display:flex;
   gap:28px;
