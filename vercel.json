@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "besztweb.vercel.app" }],
+      "destination": "https://beszterczey.com/:path*",
+      "permanent": true
+    }
+  ]
+}
