@@ -50,7 +50,10 @@
 
 <main id="top">
 
-  <section class="hero container">
+  <section class="hero">
+    <canvas id="heroCodeBg" class="hero-codebg" aria-hidden="true"></canvas>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-inner container">
     <div class="hero-text">
       <h1 data-i18n="heroH1">Precíz weboldalak,<br>versenyzői tempóban.</h1>
       <p class="lead" data-i18n="heroSub">Egyszemélyes webfejlesztés mechatronikai háttérrel — gyors, pontos munka az első vázlattól az élesítésig.</p>
@@ -61,6 +64,7 @@
     </div>
     <canvas class="hero-mark" id="hero3d" aria-hidden="true"></canvas>
     <noscript><span class="hero-mark-fallback">Beszterczey Web</span></noscript>
+    </div>
   </section>
 
   <section id="services" class="split container">
@@ -185,6 +189,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="hero-codebg.js"></script>
 <script src="hero3d.js"></script>
 <script src="reveal.js"></script>
 <script src="i18n.js"></script>
