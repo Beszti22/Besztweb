@@ -14,6 +14,19 @@
 html{scroll-behavior:smooth;}
 html.intro-lock,html.intro-lock body{overflow:hidden;height:100%;}
 html.skip-intro .start-gate{display:none;}
+
+/* scrollbar — the same gate-red-to-blue gradient as the rail, carried into
+   the one control every visitor touches on every page */
+html{scrollbar-width:thin;scrollbar-color:var(--gate-blue) var(--bg);}
+::-webkit-scrollbar{width:11px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{
+  background-image:linear-gradient(var(--gate-red), var(--gate-blue));
+  background-clip:padding-box;
+  border:2px solid var(--bg);
+  border-radius:7px;
+}
+::-webkit-scrollbar-thumb:hover{border-width:1px;}
 body{
   margin:0;
   background:var(--bg);
@@ -328,12 +341,17 @@ main{perspective:1400px;}
 }
 
 .work-card{
+  --rx:0deg;
+  --ry:0deg;
+  --mx:50%;
+  --my:50%;
   position:relative;
   background:var(--bg-raised);
   border:1px solid var(--line);
   border-radius:10px;
   overflow:hidden;
-  transition:transform 320ms cubic-bezier(.4,0,.2,1), border-color 320ms ease, box-shadow 320ms ease;
+  transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition:transform 420ms cubic-bezier(.2,.8,.2,1), border-color 320ms ease, box-shadow 320ms ease;
 }
 .work-card::before{
   content:"";
@@ -341,23 +359,27 @@ main{perspective:1400px;}
   top:0; left:0; right:0;
   height:4px;
   background:var(--gate-red);
-  z-index:2;
+  z-index:3;
+  transition:box-shadow 320ms ease;
 }
 .work-card:nth-child(even)::before{background:var(--gate-blue);}
 
 .work-card:hover,
 .work-card:focus-within{
-  transform:translateY(-6px);
+  transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(-10px);
   border-color:var(--gate-red);
 }
 .work-card:nth-child(even):hover,
 .work-card:nth-child(even):focus-within{
   border-color:var(--gate-blue);
 }
-.work-card:hover{box-shadow:0 24px 48px -12px rgba(232,56,79,0.28);}
-.work-card:nth-child(even):hover{box-shadow:0 24px 48px -12px rgba(62,123,255,0.28);}
+.work-card:hover{box-shadow:0 32px 64px -16px rgba(232,56,79,0.38);}
+.work-card:nth-child(even):hover{box-shadow:0 32px 64px -16px rgba(62,123,255,0.38);}
+.work-card:hover::before{box-shadow:0 0 16px rgba(232,56,79,0.75);}
+.work-card:nth-child(even):hover::before{box-shadow:0 0 16px rgba(62,123,255,0.75);}
 
 .work-card-media{
+  position:relative;
   display:block;
   aspect-ratio:4/3;
   overflow:hidden;
@@ -368,12 +390,52 @@ main{perspective:1400px;}
   height:100%;
   object-fit:cover;
   transform:scale(1.0);
-  transition:transform 600ms cubic-bezier(.2,.8,.2,1);
+  transition:transform 600ms cubic-bezier(.2,.8,.2,1), filter 420ms ease;
 }
 .work-card:hover .work-card-media img,
-.work-card:focus-within .work-card-media img{transform:scale(1.07);}
+.work-card:focus-within .work-card-media img{transform:scale(1.09);filter:brightness(0.72);}
+
+/* cursor-tracked sheen, scoped to the image so body text stays fully legible */
+.work-card-media::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,0.3), transparent 55%);
+  opacity:0;
+  transition:opacity 280ms ease;
+  mix-blend-mode:overlay;
+  pointer-events:none;
+}
+.work-card:hover .work-card-media::after,
+.work-card:focus-within .work-card-media::after{opacity:1;}
+
+.work-card-view{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  transform:scale(0.8);
+  transition:opacity 280ms ease, transform 320ms cubic-bezier(.2,.8,.2,1);
+  pointer-events:none;
+}
+.work-card-view svg{
+  width:30px;
+  height:30px;
+  padding:14px;
+  color:var(--ink);
+  background:rgba(20,23,28,0.55);
+  border:1px solid rgba(242,240,234,0.3);
+  border-radius:50%;
+  box-sizing:content-box;
+  backdrop-filter:blur(2px);
+}
+.work-card:hover .work-card-view,
+.work-card:focus-within .work-card-view{opacity:1;transform:scale(1);}
+
 @media (prefers-reduced-motion: reduce){
-  .work-card,.work-card-media img{transition:none;}
+  .work-card,.work-card-media img,.work-card-media::after,.work-card-view{transition:none;}
   .work-card:hover{transform:none;}
 }
 
