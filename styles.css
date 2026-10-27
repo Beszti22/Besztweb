@@ -214,11 +214,23 @@ main{perspective:1400px;}
 .case-img{
   display:block;
   width:100%;
+  max-width:360px;
   aspect-ratio:16/10;
   object-fit:cover;
   border-radius:6px;
   border:1px solid var(--line);
   margin-bottom:20px;
+}
+
+.portrait-img{
+  display:block;
+  width:100%;
+  max-width:220px;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:6px;
+  border:1px solid var(--line);
+  margin-bottom:24px;
 }
 
 /* footer */
