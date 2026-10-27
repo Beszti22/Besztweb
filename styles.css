@@ -27,6 +27,34 @@ html{scrollbar-width:thin;scrollbar-color:var(--gate-blue) var(--bg);}
   border-radius:7px;
 }
 ::-webkit-scrollbar-thumb:hover{border-width:1px;}
+
+/* custom cursor — a trailing "gate" (dot = racer, ring = the gate it's
+   carving around), only drawn in once cursor.js confirms a fine pointer
+   and no reduced-motion preference; native cursor is the default/fallback */
+html.custom-cursor-on, html.custom-cursor-on *{cursor:none;}
+.cursor-dot, .cursor-ring{
+  position:fixed; top:0; left:0; pointer-events:none; z-index:9999;
+  border-radius:50%; will-change:transform;
+}
+.cursor-dot{
+  width:8px; height:8px;
+  background:linear-gradient(135deg, var(--gate-red), var(--gate-blue));
+  opacity:0;
+  transition:opacity 200ms ease, width 200ms ease, height 200ms ease, transform 60ms linear;
+}
+.cursor-ring{
+  width:34px; height:34px;
+  border:1.5px solid var(--gate-blue);
+  opacity:0;
+  transition:opacity 200ms ease, width 220ms cubic-bezier(.4,0,.2,1), height 220ms cubic-bezier(.4,0,.2,1), border-color 220ms ease, background 220ms ease;
+}
+.cursor-dot.is-active{width:0;height:0;}
+.cursor-ring.is-active{
+  width:52px; height:52px;
+  border-color:var(--gate-red);
+  background:radial-gradient(circle, rgba(232,56,79,0.14), rgba(62,123,255,0.08) 70%, transparent 72%);
+}
+.cursor-ring.is-pressed{width:26px;height:26px;}
 body{
   margin:0;
   background:var(--bg);
