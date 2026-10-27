@@ -211,6 +211,15 @@ main{perspective:1400px;}
 
 .case{max-width:640px;}
 .case--second{margin-top:48px;padding-top:40px;border-top:1px solid var(--line);}
+.case-img{
+  display:block;
+  width:100%;
+  aspect-ratio:16/10;
+  object-fit:cover;
+  border-radius:6px;
+  border:1px solid var(--line);
+  margin-bottom:20px;
+}
 
 /* footer */
 .site-footer{border-top:1px solid var(--line);padding:28px 0;color:var(--ink-muted);font-size:0.85rem;}
