@@ -87,7 +87,7 @@
       <p data-i18n="aboutP1">Kettős képzésben tanulok a BME-n: műszaki menedzser szakon (pénzügymenedzsment specializáció) és mechatronikai mérnöki szakon egyszerre, közben egy féléves Erasmus cserét is elvégeztem az észt TalTechen. Dolgoztam már a Siemens Energynél, az IBM-nél és az Egis Gyógyszergyárban — pénzügyi, minőségügyi és üzemfenntartási területen. Tíz évig versenyszerűen judóztam, most alpesi síben versenyzek nemzetközi szinten, jártam junior világbajnokságon is. Ugyanezt a fegyelmet és pontosságot hozom a weboldalakba: kontrollált folyamat, tartott határidők.</p>
     </div>
     <div>
-      <img class="portrait-img" src="/assets/photo/kristof.webp" alt="Beszterczey Kristóf portréja" width="480" height="480" loading="lazy">
+      <img class="portrait-img" src="/assets/photo/kristof-v2.webp" alt="Beszterczey Kristóf portréja" width="480" height="480" loading="lazy">
       <dl class="spec-list spec-list--tight">
         <div class="spec-row"><dt data-i18n="aboutSpec1Label">Tanulmányok</dt><dd data-i18n="aboutSpec1Val">BME — műszaki menedzser & mechatronikai mérnöki</dd></div>
         <div class="spec-row"><dt data-i18n="aboutSpec2Label">Tapasztalat</dt><dd data-i18n="aboutSpec2Val">Siemens Energy, IBM, Egis</dd></div>
@@ -96,51 +96,72 @@
     </div>
   </section>
 
-  <section id="work" class="split container">
-    <h2 data-i18n="workH2">Munkáim</h2>
-    <div class="case">
-      <img class="case-img" src="/assets/work/snowline.webp" alt="Snowline Alpesi Síklub — versenyző lesiklás közben, nemzetközi zászlókkal a háttérben" width="960" height="600" loading="lazy">
-      <h3>Snowline Alpesi Síklub</h3>
-      <p data-i18n="caseDesc">Kétnyelvű klubhonlap saját kapcsolati-form backenddel, optimalizált galériával és automata deploy folyamattal.</p>
-      <dl class="spec-list spec-list--tight">
-        <div class="spec-row"><dt data-i18n="caseSpec1Label">Nyelvek</dt><dd>HU / EN</dd></div>
-        <div class="spec-row"><dt data-i18n="caseSpec2Label">Backend</dt><dd>Vercel + Resend</dd></div>
-        <div class="spec-row"><dt data-i18n="caseSpec3Label">Galéria</dt><dd data-i18n="caseSpec3Val">87%-kal kisebb képméret</dd></div>
-      </dl>
-      <a href="https://snowline.hu" class="text-link" target="_blank" rel="noopener" data-i18n="caseLink">Élő oldal megtekintése</a>
+  <section id="work" class="split container work-section">
+    <div class="work-head">
+      <h2 data-i18n="workH2">Munkáim</h2>
+      <p class="lead" data-i18n="workLead">Négy élő projekt, pirossal és kékkel jelölve — ugyanúgy, ahogy a kapukat kirakják egy lesiklópályán.</p>
     </div>
-    <div class="case case--second">
-      <img class="case-img" src="/assets/work/matrafured.webp" alt="Mátrafüred Sport — légifotó a Mátra lábánál fekvő terepről, az interaktív domborzat-vizualizáció alapja" width="960" height="600" loading="lazy">
-      <h3>Mátrafüred Sport</h3>
-      <p data-i18n="case2Desc">Közösségi sportegyesületi oldal a Mátra lábánál, hat szakosztállyal — évszakonként váltó, interaktív hős-szekcióval és jelentkezési formmal.</p>
-      <dl class="spec-list spec-list--tight">
-        <div class="spec-row"><dt data-i18n="case2Spec1Label">Szakosztályok</dt><dd data-i18n="case2Spec1Val">6 (sí, túra, multisport, vízi sport, tenisz, kosár)</dd></div>
-        <div class="spec-row"><dt data-i18n="caseSpec1Label">Nyelvek</dt><dd>HU / EN</dd></div>
-        <div class="spec-row"><dt data-i18n="case2Spec3Label">Interaktív</dt><dd data-i18n="case2Spec3Val">Évszakváltós műholdkép- és domborzat-vizualizáció</dd></div>
-      </dl>
-      <a href="https://matrasport.vercel.app/" class="text-link" target="_blank" rel="noopener" data-i18n="caseLink">Élő oldal megtekintése</a>
-    </div>
-    <div class="case case--second">
-      <img class="case-img" src="/assets/work/carvtex.webp" alt="CarvteX Síszerviz — havas hegyi panoráma két sílécvéggel az előtérben" width="960" height="600" loading="lazy">
-      <h3>CarvteX Síszerviz</h3>
-      <p data-i18n="case3Desc">Kétnyelvű síszerviz oldal interaktív, Three.js-alapú 3D síléc-bemutatóval — görgetésre bomlik ki a léc szerkezete rétegenként.</p>
-      <dl class="spec-list spec-list--tight">
-        <div class="spec-row"><dt data-i18n="caseSpec1Label">Nyelvek</dt><dd>HU / EN</dd></div>
-        <div class="spec-row"><dt data-i18n="caseSpec2Label">Backend</dt><dd>Vercel + Resend</dd></div>
-        <div class="spec-row"><dt data-i18n="case3Spec3Label">3D bemutató</dt><dd data-i18n="case3Spec3Val">Scroll-vezérelt Three.js síléc-viewer</dd></div>
-      </dl>
-      <a href="https://carvtex-website.vercel.app/" class="text-link" target="_blank" rel="noopener" data-i18n="caseLink">Élő oldal megtekintése</a>
-    </div>
-    <div class="case case--second">
-      <img class="case-img" src="/assets/work/barlay.webp" alt="Barlay Benyó Ski — síléc-sor a kölcsönző műhely polcán" width="960" height="600" loading="lazy">
-      <h3>Barlay Benyó Ski</h3>
-      <p data-i18n="case4Desc">Síkölcsönző és -szerviz oldal két egykori versenyzőtől — bérlési és időpontfoglalási folyamat, galériával és kapcsolati formmal.</p>
-      <dl class="spec-list spec-list--tight">
-        <div class="spec-row"><dt data-i18n="caseSpec1Label">Nyelvek</dt><dd>HU / EN</dd></div>
-        <div class="spec-row"><dt data-i18n="case4Spec2Label">Szolgáltatás</dt><dd data-i18n="case4Spec2Val">Kölcsönzés + élezés, waxolás, kötésbeállítás</dd></div>
-        <div class="spec-row"><dt data-i18n="case4Spec3Label">Helyszín</dt><dd data-i18n="case4Spec3Val">MOM Park felett, Budapest</dd></div>
-      </dl>
-      <a href="https://barlay-benyo-ski.vercel.app/" class="text-link" target="_blank" rel="noopener" data-i18n="caseLink">Élő oldal megtekintése</a>
+    <div class="work-grid">
+    <article class="work-card">
+      <a class="work-card-media" href="https://snowline.hu" target="_blank" rel="noopener" aria-label="Snowline Alpesi Síklub — élő oldal megtekintése">
+        <img src="/assets/work/snowline.webp" alt="Snowline Alpesi Síklub — versenyző lesiklás közben, nemzetközi zászlókkal a háttérben" width="840" height="630" loading="lazy">
+      </a>
+      <div class="work-card-body">
+        <h3>Snowline Alpesi Síklub</h3>
+        <p data-i18n="caseDesc">Kétnyelvű klubhonlap saját kapcsolati-form backenddel, optimalizált galériával és automata deploy folyamattal.</p>
+        <dl class="spec-list spec-list--tight">
+          <div class="spec-row"><dt data-i18n="caseSpec1Label">Nyelvek</dt><dd>HU / EN</dd></div>
+          <div class="spec-row"><dt data-i18n="caseSpec2Label">Backend</dt><dd>Vercel + Resend</dd></div>
+          <div class="spec-row"><dt data-i18n="caseSpec3Label">Galéria</dt><dd data-i18n="caseSpec3Val">87%-kal kisebb képméret</dd></div>
+        </dl>
+        <a href="https://snowline.hu" class="text-link" target="_blank" rel="noopener" data-i18n="caseLink">Élő oldal megtekintése</a>
+      </div>
+    </article>
+    <article class="work-card">
+      <a class="work-card-media" href="https://matrasport.vercel.app/" target="_blank" rel="noopener" aria-label="Mátrafüred Sport — élő oldal megtekintése">
+        <img src="/assets/work/matrafured.webp" alt="Mátrafüred Sport — légifotó a Mátra lábánál fekvő terepről, az interaktív domborzat-vizualizáció alapja" width="840" height="630" loading="lazy">
+      </a>
+      <div class="work-card-body">
+        <h3>Mátrafüred Sport</h3>
+        <p data-i18n="case2Desc">Közösségi sportegyesületi oldal a Mátra lábánál, hat szakosztállyal — évszakonként váltó, interaktív hős-szekcióval és jelentkezési formmal.</p>
+        <dl class="spec-list spec-list--tight">
+          <div class="spec-row"><dt data-i18n="case2Spec1Label">Szakosztályok</dt><dd data-i18n="case2Spec1Val">6 (sí, túra, multisport, vízi sport, tenisz, kosár)</dd></div>
+          <div class="spec-row"><dt data-i18n="caseSpec1Label">Nyelvek</dt><dd>HU / EN</dd></div>
+          <div class="spec-row"><dt data-i18n="case2Spec3Label">Interaktív</dt><dd data-i18n="case2Spec3Val">Évszakváltós műholdkép- és domborzat-vizualizáció</dd></div>
+        </dl>
+        <a href="https://matrasport.vercel.app/" class="text-link" target="_blank" rel="noopener" data-i18n="caseLink">Élő oldal megtekintése</a>
+      </div>
+    </article>
+    <article class="work-card">
+      <a class="work-card-media" href="https://carvtex-website.vercel.app/" target="_blank" rel="noopener" aria-label="CarvteX Síszerviz — élő oldal megtekintése">
+        <img src="/assets/work/carvtex.webp" alt="CarvteX Síszerviz — havas hegyi panoráma két sílécvéggel az előtérben" width="840" height="630" loading="lazy">
+      </a>
+      <div class="work-card-body">
+        <h3>CarvteX Síszerviz</h3>
+        <p data-i18n="case3Desc">Kétnyelvű síszerviz oldal interaktív, Three.js-alapú 3D síléc-bemutatóval — görgetésre bomlik ki a léc szerkezete rétegenként.</p>
+        <dl class="spec-list spec-list--tight">
+          <div class="spec-row"><dt data-i18n="caseSpec1Label">Nyelvek</dt><dd>HU / EN</dd></div>
+          <div class="spec-row"><dt data-i18n="caseSpec2Label">Backend</dt><dd>Vercel + Resend</dd></div>
+          <div class="spec-row"><dt data-i18n="case3Spec3Label">3D bemutató</dt><dd data-i18n="case3Spec3Val">Scroll-vezérelt Three.js síléc-viewer</dd></div>
+        </dl>
+        <a href="https://carvtex-website.vercel.app/" class="text-link" target="_blank" rel="noopener" data-i18n="caseLink">Élő oldal megtekintése</a>
+      </div>
+    </article>
+    <article class="work-card">
+      <a class="work-card-media" href="https://barlay-benyo-ski.vercel.app/" target="_blank" rel="noopener" aria-label="Barlay Benyó Ski — élő oldal megtekintése">
+        <img src="/assets/work/barlay.webp" alt="Barlay Benyó Ski — síléc-sor a kölcsönző műhely polcán" width="840" height="630" loading="lazy">
+      </a>
+      <div class="work-card-body">
+        <h3>Barlay Benyó Ski</h3>
+        <p data-i18n="case4Desc">Síkölcsönző és -szerviz oldal két egykori versenyzőtől — bérlési és időpontfoglalási folyamat, galériával és kapcsolati formmal.</p>
+        <dl class="spec-list spec-list--tight">
+          <div class="spec-row"><dt data-i18n="caseSpec1Label">Nyelvek</dt><dd>HU / EN</dd></div>
+          <div class="spec-row"><dt data-i18n="case4Spec2Label">Szolgáltatás</dt><dd data-i18n="case4Spec2Val">Kölcsönzés + élezés, waxolás, kötésbeállítás</dd></div>
+          <div class="spec-row"><dt data-i18n="case4Spec3Label">Helyszín</dt><dd data-i18n="case4Spec3Val">MOM Park felett, Budapest</dd></div>
+        </dl>
+        <a href="https://barlay-benyo-ski.vercel.app/" class="text-link" target="_blank" rel="noopener" data-i18n="caseLink">Élő oldal megtekintése</a>
+      </div>
+    </article>
     </div>
   </section>
 
