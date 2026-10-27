@@ -12,6 +12,8 @@
 
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
+html.intro-lock,html.intro-lock body{overflow:hidden;height:100%;}
+html.skip-intro .start-gate{display:none;}
 body{
   margin:0;
   background:var(--bg);
@@ -43,6 +45,81 @@ p{margin:0 0 16px;max-width:62ch;color:var(--ink);}
 .lead{color:var(--ink-muted);font-size:1.05rem;max-width:56ch;}
 
 a{color:inherit;}
+
+/* start gate — one orchestrated entrance, echoing an alpine start sequence:
+   lights fire in turn, the clock spins up, then the gate lifts away. Plays
+   once per session; skipped entirely for reduced motion or repeat visits. */
+.start-gate{
+  position:fixed;
+  inset:0;
+  z-index:999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--bg);
+  transform:translateY(0);
+  transition:transform 620ms cubic-bezier(.76,0,.24,1);
+  will-change:transform;
+}
+.start-gate.is-leaving{transform:translateY(-100%);}
+
+.start-gate-inner{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:22px;
+}
+
+.start-gate-lights{display:flex;gap:14px;}
+.start-gate-lights .light{
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:var(--line);
+  box-shadow:none;
+  opacity:0.5;
+  animation:light-ignite 620ms cubic-bezier(.4,0,.2,1) forwards;
+}
+.light--red{background:var(--gate-red);}
+.light--blue{background:var(--gate-blue);}
+.start-gate-lights .light:nth-child(1){animation-delay:0ms;}
+.start-gate-lights .light:nth-child(2){animation-delay:140ms;}
+.start-gate-lights .light:nth-child(3){animation-delay:280ms;}
+.start-gate-lights .light:nth-child(4){animation-delay:420ms;}
+@keyframes light-ignite{
+  0%{opacity:0.25;box-shadow:none;transform:scale(0.85);}
+  100%{opacity:1;transform:scale(1);}
+}
+.start-gate-lights .light:nth-child(1){animation-name:light-ignite-red;}
+.start-gate-lights .light:nth-child(2){animation-name:light-ignite-red;}
+.start-gate-lights .light:nth-child(3){animation-name:light-ignite-blue;}
+.start-gate-lights .light:nth-child(4){animation-name:light-ignite-blue;}
+@keyframes light-ignite-red{
+  0%{opacity:0.25;transform:scale(0.85);box-shadow:0 0 0 rgba(232,56,79,0);}
+  100%{opacity:1;transform:scale(1);box-shadow:0 0 18px rgba(232,56,79,0.65);}
+}
+@keyframes light-ignite-blue{
+  0%{opacity:0.25;transform:scale(0.85);box-shadow:0 0 0 rgba(62,123,255,0);}
+  100%{opacity:1;transform:scale(1);box-shadow:0 0 18px rgba(62,123,255,0.65);}
+}
+.start-gate.is-go .light{animation:none;opacity:1;transform:scale(1.08);}
+.start-gate.is-go .light--red{box-shadow:0 0 22px rgba(232,56,79,0.85);}
+.start-gate.is-go .light--blue{box-shadow:0 0 22px rgba(62,123,255,0.85);}
+
+.start-gate-clock{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-variant-numeric:tabular-nums;
+  font-size:2.6rem;
+  font-weight:600;
+  color:var(--ink-muted);
+  letter-spacing:0.02em;
+  transition:color 180ms ease;
+}
+.start-gate.is-go .start-gate-clock{color:var(--ink);}
+
+@media (prefers-reduced-motion: reduce){
+  .start-gate{display:none;}
+}
 
 /* rail — single continuous accent, the one bold element on the page */
 .rail{
