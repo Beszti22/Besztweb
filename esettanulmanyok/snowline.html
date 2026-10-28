@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esettanulmány: Snowline Alpesi Síklub — Beszterczey Web</title>
+<meta name="description" content="Hogyan épült a Snowline Alpesi Síklub kétnyelvű weboldala: 87%-kal kisebb galériaképek, automata kapcsolatfelvétel és élő naptár-integráció.">
+<link rel="canonical" href="https://beszterczey.com/esettanulmanyok/snowline.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Beszterczey Web">
+<meta property="og:title" content="Esettanulmány: Snowline Alpesi Síklub">
+<meta property="og:description" content="Hogyan épült a Snowline Alpesi Síklub kétnyelvű weboldala: 87%-kal kisebb galériaképek, automata kapcsolatfelvétel és élő naptár-integráció.">
+<meta property="og:url" content="https://beszterczey.com/esettanulmanyok/snowline.html">
+<meta property="og:image" content="https://beszterczey.com/assets/work/snowline.webp">
+<meta name="theme-color" content="#14171C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/favicon.png">
+<style>
+  .cs-hero{padding:72px 28px 48px;}
+  .cs-eyebrow{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.08em;font-size:.85rem;color:var(--ink-muted);margin:0 0 12px;}
+  .cs-back{display:inline-block;margin-bottom:28px;}
+  .cs-meta{color:var(--ink-muted);font-size:.95rem;max-width:62ch;}
+  .cs-sub{margin-top:28px;}
+  .cs-sub h3{font-family:var(--font-display);font-weight:500;font-size:1.1rem;margin:0 0 10px;}
+  .cs-sub ul{margin:0;padding-left:20px;color:var(--ink-muted);}
+  .cs-sub li{margin:0 0 10px;max-width:60ch;}
+  .cs-sub li:last-child{margin-bottom:0;}
+  .cs-cta{text-align:center;}
+  .cs-cta h2{margin-left:auto;margin-right:auto;}
+</style>
+</head>
+<body>
+
+<div class="rail" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="container header-row">
+    <a href="/#top" class="brand" aria-label="Beszterczey Web, kezdőlap">
+      <span class="brand-beszt">Beszt</span><svg class="brand-gate" viewBox="0 0 30 48" aria-hidden="true"><path d="M2 46L20 2h8L10 46z" fill="var(--gate-red)"/><path d="M10 46L22 16h6L16 46z" fill="var(--gate-blue)" opacity="0.9"/></svg><span class="brand-rest">erczey</span><span class="brand-tag">web</span>
+    </a>
+    <nav class="main-nav" aria-label="Fő navigáció">
+      <a href="/#services" data-i18n="navServices">Szolgáltatások</a>
+      <a href="/#about" data-i18n="navAbout">Rólam</a>
+      <a href="/#work" data-i18n="navWork">Munkáim</a>
+      <a href="/#contact" data-i18n="navContact">Kapcsolat</a>
+    </nav>
+    <div class="lang-toggle" role="group" aria-label="Nyelv váltása">
+      <button type="button" id="btnHu" aria-pressed="true">HU</button>
+      <button type="button" id="btnEn" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="split container cs-hero">
+    <a href="/#work" class="text-link cs-back" data-i18n="csBack">← Vissza a munkáimhoz</a>
+    <p class="cs-eyebrow" data-i18n="csEyebrow">Esettanulmány</p>
+    <h1 data-i18n="csTitle">Snowline Alpesi Síklub</h1>
+    <p class="cs-meta" data-i18n="csMeta">Ügyfél: Snowline Alpesi Síklub · Szerep: teljes weboldal tervezés, fejlesztés és folyamatos karbantartás</p>
+  </section>
+
+  <section class="split container">
+    <h2 data-i18n="csChallengeH">A kihívás</h2>
+    <p data-i18n="csChallengeBody">A klub korábbi oldala tömörítetlen galériaképeket és egy élő kapcsolatfelvételi csatorna nélküli kapcsolati oldalt vitt tovább. A cél egy új, kétnyelvű (HU/EN), gyors és karbantartható oldal volt, ami jól tükrözi a klub arculatát, és működő email-csatornát ad az érdeklődőknek.</p>
+  </section>
+
+  <section class="split container">
+    <h2 data-i18n="csSolutionH">A megoldás</h2>
+    <div class="cs-sub">
+      <h3 data-i18n="cs1H">Teljesítmény — galéria modernizáció</h3>
+      <div data-i18n="cs1Body"><ul><li>Képek WebP formátumra konvertálva: <strong>87%-kal kisebb</strong> fájlméret</li><li>Lazy loading bevezetve minden galériaképen</li><li>Pinterest-stílusú mozaik (masonry) elrendezés</li><li>Lightbox frissítve: előző/következő navigáció, billentyűzet- és swipe-támogatás, képszámláló</li></ul></div>
+    </div>
+    <div class="cs-sub">
+      <h3 data-i18n="cs2H">Funkcionalitás — kapcsolatfelvétel</h3>
+      <div data-i18n="cs2Body"><ul><li>Szerver-oldali kapcsolati form (Vercel serverless function) + Resend email API</li><li>A domain DNS-szinten hitelesítve a Resend-nél, dedikált feladó címmel</li><li>Korábban nem létezett automatizált email-csatorna — mostantól minden beküldött űrlap közvetlenül a klub kapcsolattartójához fut be</li></ul></div>
+    </div>
+    <div class="cs-sub">
+      <h3 data-i18n="cs3H">Élő naptár-integráció és automata értesítés</h3>
+      <div data-i18n="cs3Body"><ul><li>A naptár oldal élőben húzza be a klub Google Calendar-jából a közelgő edzéseket/versenyeket, automatikusan felismert kategóriacímkékkel; API-hiba esetén csendben visszaesik a statikus tartalomra</li><li>Kétlépcsős (double opt-in) hírlevél-feliratkozás, aláírt, időkorlátos linkekkel</li><li>Napi automata ellenőrzés (Vercel Cron): ha változik a naptár, automatikusan megy ki az értesítő a teljes listának</li></ul></div>
+    </div>
+  </section>
+
+  <section class="split container">
+    <h2 data-i18n="csResultsH">Eredmények számokban</h2>
+    <dl class="spec-list">
+      <div class="spec-row"><dt data-i18n="csResRow1Label">Galéria képméret</dt><dd data-i18n="csResRow1Val">−87%</dd></div>
+      <div class="spec-row"><dt data-i18n="csResRow2Label">Kapcsolatfelvételi csatorna</dt><dd data-i18n="csResRow2Val">0 → automata, domain-hitelesített email</dd></div>
+      <div class="spec-row"><dt data-i18n="csResRow3Label">Naptárfrissítés → értesítés</dt><dd data-i18n="csResRow3Val">manuális → napi automata ellenőrzés és kiküldés</dd></div>
+      <div class="spec-row"><dt data-i18n="csResRow4Label">Deploy folyamat</dt><dd data-i18n="csResRow4Val">manuális → automata (push-on-main)</dd></div>
+    </dl>
+  </section>
+
+  <section class="split container">
+    <h2 data-i18n="csTechH">Technológia</h2>
+    <p data-i18n="csTechBody">HTML / CSS / vanilla JS · egyedi <code>i18n.js</code> fordítási réteg · Vercel (hosting + serverless function + Cron + Edge Config) · Google Calendar API · Resend (tranzakciós email + Audience broadcast) · GitHub (verziókezelés, automata deploy)</p>
+  </section>
+
+  <section class="split container cs-cta">
+    <h2 data-i18n="csCtaH">Szeretnél hasonlót a saját oldaladnak?</h2>
+    <div class="hero-actions" style="justify-content:center;">
+      <a href="/#contact" class="btn btn-primary" data-i18n="csCtaBtn">Kérj ajánlatot</a>
+      <a href="https://snowline.hu" class="btn btn-ghost" target="_blank" rel="noopener" data-i18n="csCtaLink">Élő oldal megtekintése</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>Beszterczey Web (röviden Besztweb) — Beszterczey Kristóf</span>
+    <span>© 2026</span>
+  </div>
+</footer>
+
+<script src="/cursor.js"></script>
+<script src="/reveal.js"></script>
+<script src="/i18n.js"></script>
+</body>
+</html>

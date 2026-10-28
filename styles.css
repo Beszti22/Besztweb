@@ -471,6 +471,7 @@ main{perspective:1400px;}
 .work-card-body h3{margin-bottom:8px;}
 .work-card-body p{margin-bottom:18px;}
 .work-card-body .spec-list{margin-top:4px;margin-bottom:20px;}
+.work-card-links{display:flex;flex-wrap:wrap;gap:8px 20px;}
 
 @media (max-width:760px){
   .work-grid{grid-template-columns:1fr;gap:24px;}
