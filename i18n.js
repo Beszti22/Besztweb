@@ -52,8 +52,27 @@
       case5Spec3Val: `4,7/5 — 131 vélemény`,
       caseStudyLink: `Esettanulmány`,
       contactH2: `Beszéljünk a projektedről`,
-      contactSub: `Írj pár sort arról, mire van szükséged — hamarosan válaszolok.`,
+      contactSub: `Kérj gyors ajánlatot az alábbi űrlapon, vagy keress közvetlenül elérhetőségeimen — hamarosan válaszolok.`,
       contactCta: `Írj emailt`,
+      contactDirectHeading: `Közvetlen kapcsolat`,
+      formNameLabel: `Név *`,
+      formNamePlaceholder: `Kovács Anna`,
+      formEmailLabel: `E-mail cím *`,
+      formEmailPlaceholder: `anna@pelda.hu`,
+      formPhoneLabel: `Telefonszám (opcionális)`,
+      formPhonePlaceholder: `+36 20 123 4567`,
+      formServiceLabel: `Milyen projektről van szó?`,
+      formServiceNew: `Új weboldal`,
+      formServiceRedesign: `Weboldal felújítás`,
+      formServiceMaint: `Karbantartás &amp; funkciók`,
+      formServiceOther: `Egyéb`,
+      formMessageLabel: `Miben segíthetek? / Projekt részletei *`,
+      formMessagePlaceholder: `Röviden a weboldal céljáról, határidőről vagy elképzelésről...`,
+      formSubmit: `Ajánlatkérés elküldése`,
+      formSubmitting: `Küldés folyamatban...`,
+      formSuccess: `Köszönöm az ajánlatkérést! Hamarosan válaszolok az e-mailedre.`,
+      formError: `Nem sikerült elküldeni az üzenetet. Kérlek írj közvetlenül a szia.besztweb@gmail.com címre!`,
+      formValidationError: `Kérlek töltsd ki a kötelező mezőket és ellenőrizd az e-mail címet!`,
 
       csBack: `← Vissza a munkáimhoz`,
       csEyebrow: `Esettanulmány`,
@@ -135,8 +154,27 @@
       case5Spec3Val: `4.7/5 — 131 reviews`,
       caseStudyLink: `Case study`,
       contactH2: `Let's talk about your project`,
-      contactSub: `Send a few lines about what you need — I'll get back to you soon.`,
+      contactSub: `Request a quick quote below, or get in touch directly — I'll get back to you soon.`,
       contactCta: `Send an email`,
+      contactDirectHeading: `Direct contact`,
+      formNameLabel: `Name *`,
+      formNamePlaceholder: `Jane Doe`,
+      formEmailLabel: `Email address *`,
+      formEmailPlaceholder: `jane@example.com`,
+      formPhoneLabel: `Phone number (optional)`,
+      formPhonePlaceholder: `+36 20 123 4567`,
+      formServiceLabel: `What type of project is this?`,
+      formServiceNew: `New website`,
+      formServiceRedesign: `Website redesign`,
+      formServiceMaint: `Maintenance &amp; features`,
+      formServiceOther: `Other`,
+      formMessageLabel: `How can I help? / Project details *`,
+      formMessagePlaceholder: `Briefly describe the project goals, timeline, or requirements...`,
+      formSubmit: `Send quote request`,
+      formSubmitting: `Sending...`,
+      formSuccess: `Thank you for your inquiry! I'll get back to you shortly.`,
+      formError: `Failed to send message. Please write directly to szia.besztweb@gmail.com!`,
+      formValidationError: `Please fill out the required fields and verify your email address!`,
 
       csBack: `← Back to my work`,
       csEyebrow: `Case study`,
@@ -169,10 +207,14 @@
   };
 
   function applyLang(lang){
+    var dict = translations[lang] || translations.hu;
     document.querySelectorAll('[data-i18n]').forEach(function(el){
       var key = el.getAttribute('data-i18n');
-      var dict = translations[lang];
       if(dict && dict[key] !== undefined){ el.innerHTML = dict[key]; }
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
+      var key = el.getAttribute('data-i18n-ph');
+      if(dict && dict[key] !== undefined){ el.placeholder = dict[key]; }
     });
     document.documentElement.lang = lang;
     var btnHu = document.getElementById('btnHu');
@@ -199,4 +241,8 @@
 
   applyLang(getSavedLang() || 'hu');
   window.applyLang = applyLang;
+  window.getDict = function(){
+    var lang = document.documentElement.lang || 'hu';
+    return translations[lang] || translations.hu;
+  };
 })();
