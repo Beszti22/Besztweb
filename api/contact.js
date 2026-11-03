@@ -1,0 +1,161 @@
+// /api/contact.js — Besztweb contact & quote request handler (Vercel Serverless Function)
+// Sends inquiry emails via Resend (https://resend.com) to szia.besztweb@gmail.com.
+//
+// Expected Environment Variables (set in Vercel project settings):
+//   RESEND_API_KEY        — Resend API key
+//   CONTACT_TO_EMAIL      — Destination email (default: szia.besztweb@gmail.com)
+//   CONTACT_FROM_EMAIL    — Sender email address (default: Besztweb Ajánlatkérés <onboarding@resend.dev>
+//                            or verified domain like no-reply@beszterczey.com)
+
+function escapeHtml(str) {
+  return String(str == null ? '' : str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+module.exports = async (req, res) => {
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST');
+    return res.status(405).json({ ok: false, error: 'method_not_allowed' });
+  }
+
+  let body = req.body;
+  if (typeof body === 'string') {
+    try { body = JSON.parse(body); } catch (e) { body = {}; }
+  }
+  body = body || {};
+
+  const { name, email, phone, service, message, botcheck } = body;
+
+  // Honeypot spam check: hidden field for automated bots
+  if (botcheck) {
+    return res.status(200).json({ ok: true });
+  }
+
+  // Validate required fields
+  if (!name || !email || !message) {
+    return res.status(400).json({ ok: false, error: 'missing_fields' });
+  }
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(String(email).trim())) {
+    return res.status(400).json({ ok: false, error: 'invalid_email' });
+  }
+
+  const apiKey = process.env.RESEND_API_KEY;
+  const toAddress = process.env.CONTACT_TO_EMAIL || 'szia.besztweb@gmail.com';
+  const fromAddress = process.env.CONTACT_FROM_EMAIL || 'Besztweb Ajánlatkérés <onboarding@resend.dev>';
+
+  // Demo / preview mode if RESEND_API_KEY is not yet set in Vercel
+  if (!apiKey) {
+    console.warn(
+      'RESEND_API_KEY is not configured in Vercel environment variables. Running in demo mode:',
+      { name, email, phone, service, message }
+    );
+    return res.status(200).json({ ok: true, demo: true });
+  }
+
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safePhone = escapeHtml(phone || 'Nincs megadva');
+  const safeService = escapeHtml(service || 'Nincs megadva');
+  const safeMessage = escapeHtml(message).replace(/\n/g, '<br>');
+  const dateFormatted = new Date().toLocaleString('hu-HU', { timeZone: 'Europe/Budapest' });
+
+  const notifyHtml = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #0e1116; color: #f2f0ea; margin: 0; padding: 24px; }
+        .card { max-width: 600px; margin: 0 auto; background-color: #14171c; border: 1px solid #2a2f3a; border-radius: 12px; overflow: hidden; }
+        .header { background: linear-gradient(135deg, #1b1f27 0%, #14171c 100%); padding: 28px; border-bottom: 3px solid #3e7bff; }
+        .badge { display: inline-block; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; background: #e8384f; color: #fff; margin-bottom: 12px; }
+        h1 { margin: 0; font-size: 22px; color: #f2f0ea; font-weight: 700; }
+        .content { padding: 28px; }
+        .meta-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+        .meta-table td { padding: 10px 0; border-bottom: 1px solid #2a2f3a; font-size: 14px; }
+        .meta-label { color: #9aa0ac; width: 140px; font-weight: 500; }
+        .meta-val { color: #f2f0ea; font-weight: 600; }
+        .meta-val a { color: #3e7bff; text-decoration: none; }
+        .message-box { background: #1b1f27; border-left: 3px solid #3e7bff; border-radius: 6px; padding: 18px; margin-top: 20px; }
+        .message-title { font-size: 13px; font-weight: 600; color: #9aa0ac; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+        .message-text { color: #f2f0ea; font-size: 15px; line-height: 1.6; margin: 0; }
+        .footer { padding: 20px 28px; background: #0e1116; font-size: 12px; color: #6b7280; border-top: 1px solid #2a2f3a; text-align: center; }
+      </style>
+    </head>
+    <body>
+      <div class="card">
+        <div class="header">
+          <div class="badge">Új ajánlatkérés</div>
+          <h1>${safeName} ajánlatot kért a Besztweben</h1>
+        </div>
+        <div class="content">
+          <table class="meta-table">
+            <tr>
+              <td class="meta-label">Ügyfél neve:</td>
+              <td class="meta-val">${safeName}</td>
+            </tr>
+            <tr>
+              <td class="meta-label">E-mail cím:</td>
+              <td class="meta-val"><a href="mailto:${safeEmail}">${safeEmail}</a></td>
+            </tr>
+            <tr>
+              <td class="meta-label">Telefonszám:</td>
+              <td class="meta-val">${phone ? `<a href="tel:${safePhone}">${safePhone}</a>` : safePhone}</td>
+            </tr>
+            <tr>
+              <td class="meta-label">Szolgáltatás:</td>
+              <td class="meta-val" style="color:#3e7bff;">${safeService}</td>
+            </tr>
+            <tr>
+              <td class="meta-label">Időpont:</td>
+              <td class="meta-val" style="color:#9aa0ac;font-weight:normal;">${dateFormatted}</td>
+            </tr>
+          </table>
+
+          <div class="message-box">
+            <div class="message-title">Projekt leírása / Üzenet:</div>
+            <p class="message-text">${safeMessage}</p>
+          </div>
+        </div>
+        <div class="footer">
+          Beszterczey Web — beszterczey.com | Válaszolj közvetlenül erre az e-mailre a feladó eléréséhez.
+        </div>
+      </div>
+    </body>
+    </html>
+  `;
+
+  try {
+    const resendResp = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        from: fromAddress,
+        to: [toAddress],
+        reply_to: email,
+        subject: `Új ajánlatkérés: ${name} (${service || 'Általános'})`,
+        html: notifyHtml
+      })
+    });
+
+    if (!resendResp.ok) {
+      const errText = await resendResp.text();
+      console.error('Resend API error:', resendResp.status, errText);
+      return res.status(502).json({ ok: false, error: 'email_send_failed' });
+    }
+
+    return res.status(200).json({ ok: true });
+  } catch (err) {
+    console.error('Contact handler error:', err);
+    return res.status(500).json({ ok: false, error: 'server_error' });
+  }
+};
