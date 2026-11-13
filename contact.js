@@ -47,6 +47,7 @@
 
     var serviceEl = form.querySelector('input[name="service"]:checked');
     var service = serviceEl ? serviceEl.value : 'Új weboldal';
+    var activeLang = document.documentElement.lang || 'hu';
 
     // Reset validation visual cues
     if (nameInput) nameInput.removeAttribute('aria-invalid');
@@ -95,7 +96,8 @@
           phone: phone,
           service: service,
           message: message,
-          botcheck: botcheck
+          botcheck: botcheck,
+          lang: activeLang
         })
       });
 
