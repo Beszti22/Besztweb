@@ -41,7 +41,19 @@ module.exports = async (req, res) => {
 
   const apiKey = process.env.RESEND_API_KEY;
   const toAddress = process.env.CONTACT_TO_EMAIL || 'szia.besztweb@gmail.com';
-  const fromAddress = process.env.CONTACT_FROM_EMAIL || 'Besztweb Ajánlatkérés <onboarding@resend.dev>';
+  
+  // Format and sanitize fromAddress to avoid Resend 422 validation errors
+  let rawFrom = (process.env.CONTACT_FROM_EMAIL || '').trim();
+  let fromAddress = 'Besztweb Ajánlatkérés <onboarding@resend.dev>';
+  if (rawFrom) {
+    if (rawFrom.startsWith('<') && rawFrom.endsWith('>')) {
+      fromAddress = `Besztweb ${rawFrom}`;
+    } else if (!rawFrom.includes('<') && rawFrom.includes('@')) {
+      fromAddress = `Besztweb <${rawFrom}>`;
+    } else {
+      fromAddress = rawFrom;
+    }
+  }
 
   // Demo / preview mode if RESEND_API_KEY is not yet set in Vercel
   if (!apiKey) {
