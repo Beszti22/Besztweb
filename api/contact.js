@@ -156,18 +156,12 @@ module.exports = async (req, res) => {
     if (!resendResp.ok) {
       const errText = await resendResp.text();
       console.error('Resend API error:', resendResp.status, errText);
-      return res.status(502).json({
-        ok: false,
-        error: 'email_send_failed',
-        resendError: errText,
-        fromUsed: fromAddress,
-        toUsed: toAddress
-      });
+      return res.status(502).json({ ok: false, error: 'email_send_failed' });
     }
 
     return res.status(200).json({ ok: true });
   } catch (err) {
     console.error('Contact handler error:', err);
-    return res.status(500).json({ ok: false, error: 'server_error', message: err.message });
+    return res.status(500).json({ ok: false, error: 'server_error' });
   }
 };
