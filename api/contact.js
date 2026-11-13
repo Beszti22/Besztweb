@@ -1,11 +1,5 @@
 // /api/contact.js — Besztweb contact & quote request handler (Vercel Serverless Function)
 // Sends inquiry emails via Resend (https://resend.com) to szia.besztweb@gmail.com.
-//
-// Expected Environment Variables (set in Vercel project settings):
-//   RESEND_API_KEY        — Resend API key
-//   CONTACT_TO_EMAIL      — Destination email (default: szia.besztweb@gmail.com)
-//   CONTACT_FROM_EMAIL    — Sender email address (default: Besztweb Ajánlatkérés <onboarding@resend.dev>
-//                            or verified domain like no-reply@beszterczey.com)
 
 function escapeHtml(str) {
   return String(str == null ? '' : str)
@@ -150,12 +144,18 @@ module.exports = async (req, res) => {
     if (!resendResp.ok) {
       const errText = await resendResp.text();
       console.error('Resend API error:', resendResp.status, errText);
-      return res.status(502).json({ ok: false, error: 'email_send_failed' });
+      return res.status(502).json({
+        ok: false,
+        error: 'email_send_failed',
+        resendError: errText,
+        fromUsed: fromAddress,
+        toUsed: toAddress
+      });
     }
 
     return res.status(200).json({ ok: true });
   } catch (err) {
     console.error('Contact handler error:', err);
-    return res.status(500).json({ ok: false, error: 'server_error' });
+    return res.status(500).json({ ok: false, error: 'server_error', message: err.message });
   }
 };
